@@ -1,0 +1,15 @@
+# set the tag to a specific backstage version
+backstage:
+  image:
+    tag: 1.16.0-next.2
+
+  extraEnvVars:
+    - name: 'APP_CONFIG_app_baseUrl'
+      value: 'http://127.0.0.1:7007'
+    - name: 'APP_CONFIG_backend_baseUrl'
+      value: 'http://127.0.0.1:7007'
+    - name: 'APP_CONFIG_backend_cors_origin'
+      value: 'http://127.0.0.1:7007`'
+
+postgresql:
+  enabled: true

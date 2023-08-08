@@ -1,0 +1,27 @@
+kind: ZarfPackageConfig 
+metadata:
+  name: backstage
+  version: 1.2.0
+  description: |
+    A Zarf Package that deploys the Backstage platform created by Spotify
+
+components:
+  - name: backstage
+    description: |
+      Deploys the official Backstage chart to your kubernetes cluster
+    required: true
+    charts:
+      - name: backstage
+        url: oci://ghcr.io/backstage/charts/backstage
+        version: 1.2.0
+        namespace: backstage
+        valuesFiles:
+          - values.yaml
+    images:
+      - docker.io/bitnami/postgresql:15.3.0-debian-11-r0
+      - ghcr.io/backstage/backstage:1.16.0-next.2
+    manifests:
+      - name: backstage-zarf-connect
+        namespace: backstage
+        files:
+          - connect.yaml
